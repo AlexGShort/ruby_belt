@@ -1,0 +1,19 @@
+<a href="/groups">Dashboard</a>
+<h1><%= @group.name %></h1>
+<% if @group.users.include?(current_user) %>
+  <p><a href="/groups/<%= @group.id %>/memberships/<%= current_user.id %>" data-method="delete">Leave Group</a></p>
+<% else %>
+  <p><a href="/groups/<%= @group.id %>/memberships/<%= current_user.id %>" data-method="post">Join Group</a></p>
+<% end %>
+<p><%= @group.description %></p>
+<h3>Created by:
+  <% if @group.owner.id == current_user.id %>
+    YOU
+  <% else %>
+    <%= @group.owner.first_name %> <%= @group.owner.last_name %>
+  <% end %>
+</h3>
+<h3>Members:</h3>
+<% @group.users.each do |user| %>
+  <p><%=user.first_name %> <%= user.last_name %></p>
+<% end %>

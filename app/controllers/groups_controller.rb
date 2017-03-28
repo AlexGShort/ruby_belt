@@ -18,6 +18,10 @@ class GroupsController < ApplicationController
     end
   end
 
+  def show
+    @group = Group.find(params[:group_id])
+  end
+
   def delete
     group = Group.find(params[:group_id])
     members = Membership.where({ group:group.id})
