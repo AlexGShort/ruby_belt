@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       redirect_to "/groups"
     else
       flash[:errors] = user.errors.full_messages
-      redirect_to "/users/new"
+      redirect_to "/sessions/new"
     end
   end
 

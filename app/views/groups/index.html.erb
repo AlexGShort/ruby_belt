@@ -1,8 +1,8 @@
-<h1>Hi <%= @user.first_name %> <%= @user.last_name %></h1>
-<p>Here are the organizatons you may join:</p>
+<h1>Hi <%= @user.first_name %> <%= @user.last_name %>!</h1>
+<h3>Here are the organizations you may join:</h3>
 <% @groups.each do |group| %>
   <div class="group">
-    <p><a href="/groups/<%= group.id %>"><%= group.name %></a>
+    <h4><a href="/groups/<%= group.id %>"><%= group.name %></a></h4>
       <% if group.owner == current_user %>
         <a href="/groups/<%= group.id %>" data-method="delete">Delete Group</a>
       <% end %>
@@ -10,9 +10,10 @@
     <p>Members: <%= group.memberships.count %></p>
     <p><%= group.description %></p>
   </div>
+  <hr />
 <% end %>
 <hr />
-<p>Create a new organization</p>
+<h3>Create a new organization</h3>
 <form action="/groups" method="POST">
   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
   <label for="name">Organization Name:</label>
